@@ -16,7 +16,6 @@ const theData = getAPIData('senators.json').then(data => {
 })
 
 //main area
-
 const container = document.querySelector('.container')
 
 
@@ -36,7 +35,41 @@ function populateDOM(senator_array) {
         figure.appendChild(figureImage)
         cardImage.appendChild(figure)
         card.appendChild(cardImage)
+        card.appendChild(cardContent(senator))
         container.appendChild(card)
     })
 }
- function cardContent()
+ 
+function cardContent(senator) {
+    let cardContent = document.createElement('div')
+    cardContent.setAttribute('class', 'card-content')
+    let media = document.createElement('div')
+    media.setAttribute('class', 'media')
+    let mediaLeft = document.createElement('div')
+    mediaLeft.setAttribute('class', 'mediaLeft')
+    let figure = document.createElement('figure')
+    figure.setAttribute('class', 'image is-48x48')
+    let img = document.createElement('img')
+    img.src = `https://bulma.io/images/placeholders/96x96.png`
+    img.alt = 'Placeholder image'
+    let mediaContent = document.createElement('div')
+    mediaContent.setAttribute('class', 'media-content')
+    let titleP = document.createElement('p')
+    titleP.setAttribute('class', 'title is-4')
+    titleP.textContent = `senator data when i find it`
+    let subtitleP = document.createElement('p')
+    subtitleP.setAttribute('class', 'subtitle is-6')
+    subtitleP.textContent = 'test'
+
+    mediaContent.appendChild(titleP)
+    mediaContent.appendChild(subtitleP)
+    figure.appendChild(img)
+    mediaLeft.appendChild(figure)
+    media.appendChild(mediaLeft)
+    media.appendChild(mediaContent)
+    cardContent.appendChild(media)
+    return cardContent
+
+
+
+}
